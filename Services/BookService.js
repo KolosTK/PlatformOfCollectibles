@@ -1,8 +1,10 @@
 import Book from '../Models/Book.js';
+import fileService from '../FileService.js';
 
 class BookService{
-    async create (book){
-            const createdStudent = await Book.create(book);
+    async create (book,picture){
+        const fileName = fileService.saveFile(picture);
+            const createdStudent = await Book.create({...book,picture:fileName});
             return createdStudent;
     }
     async getAll (){

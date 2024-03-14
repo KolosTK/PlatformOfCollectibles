@@ -4,7 +4,8 @@ import BookService from "../Services/BookService.js"
 class StudentController{
     async create (req,res){
         try{
-            const book=await BookService.create(req.body);
+            console.log(req.files)
+            const book=await BookService.create(req.body,req.files.picture);
             return res.status(200).json(book);
         }catch(error)
         {
