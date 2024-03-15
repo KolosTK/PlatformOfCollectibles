@@ -7,6 +7,8 @@ const PORT = 6000;
 
 let app = express();
 
+
+
 app.use(express.json());
 app.use(express.static('Static'));
 app.use(fileUpload({}));

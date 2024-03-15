@@ -1,7 +1,7 @@
 import Book from "../Models/Book.js";
 import BookService from "../Services/BookService.js"
 
-class StudentController{
+class BookController{
     async create (req,res){
         try{
             console.log(req.files)
@@ -49,4 +49,4 @@ class StudentController{
         }
     }
 }
-export default new StudentController();
+export default new BookController();
