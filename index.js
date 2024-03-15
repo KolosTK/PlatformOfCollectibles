@@ -12,8 +12,6 @@ app.use(express.static('Static'));
 app.use(fileUpload({}));
 app.use('/api',router);
 
-
-
 const DB_URL ="mongodb+srv://tanyakolosenko1705:irXfH6xT8DqszQSg@cluster0.nhqth5q.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 async function StartApp(){

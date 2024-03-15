@@ -5,7 +5,7 @@ const Book = new mongoose.Schema({
     "description":{type:String, required:true},
     "author":{type:String,required:true},
     "yearOfCreation":{type:String,required:true},
-    "genre":{type:String,required:true},
+    "genre":{type:[String],required:true},
     "picture":{type:String}
 });
 export default mongoose.model('Book', Book);

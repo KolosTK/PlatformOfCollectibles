@@ -14,8 +14,8 @@ class StudentController{
     }
     async getAll (req,res){
         try{
-            const book = await BookService.getAll();
-            return res.status(200).json(book);
+            const books = await BookService.getAll(req.page,req.limit);
+            return res.status(200).json(books);
         }catch(error)
         {
             res.status(500).json(error)
@@ -42,7 +42,7 @@ class StudentController{
     async delete (req,res){
         try{
             const book = await BookService.delete(req.params.id);
-            return res.status(200).json(Book);
+            return res.status(200).json(book);
         }catch(error)
         {
             res.status(500).json(error)

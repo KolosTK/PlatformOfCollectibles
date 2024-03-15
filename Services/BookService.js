@@ -7,8 +7,11 @@ class BookService{
             const createdStudent = await Book.create({...book,picture:fileName});
             return createdStudent;
     }
-    async getAll (){
-        const allBooks = await Book.find();
+    async getAll (page,limit){
+            if(!page)page=1;
+            if(!limit)limit=10;
+            const skip=(page-1)*10;
+            const allBooks = await Book.find().skip(skip).limit(limit);
         return allBooks;
     }
     async getOne (id){
