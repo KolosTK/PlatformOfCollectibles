@@ -1,6 +1,7 @@
 import User from "../Models/User.js";
-
+import dotenv from 'dotenv';
 import bcrypt from "bcrypt";
+dotenv.config();
 
 class UserService{
     async getAll (){
@@ -17,9 +18,9 @@ class UserService{
                 expire: Date.now() + 1000 * 60 * 60 * 24 * 7,
               };
         
-              var token = jwt.encode(payload, "99c0003a218b94e0eba0260cc1ec5a1767976ba39fb279a38cc0c2ebca6ed388");
+              var token = jwt.encode(payload, process.env.JWT_SECRET);
         
-              res.json({ token: token });
+              username.json({ token: token });
             }
           });
     };
@@ -27,9 +28,9 @@ class UserService{
     async register (user){
         User.register({
             email:user.email,
-            username:usesr.username
+            username:user.username
         }),
-        function(err,msg){
+        function(err){
             if(err){
                 return err;
             }else{

@@ -2,8 +2,8 @@ import express from "express";
 import mongoose from 'mongoose';
 import router from './router.js';
 import fileUpload from "express-fileupload";
-
-const PORT = 6000;
+import dotenv from 'dotenv';
+dotenv.config();
 
 let app = express();
 
@@ -14,16 +14,14 @@ app.use(express.static('Static'));
 app.use(fileUpload({}));
 app.use('/api',router);
 
-const DB_URL ="mongodb+srv://tanyakolosenko1705:irXfH6xT8DqszQSg@cluster0.nhqth5q.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-
-async function StartApp(){
+async function startApp(){
     try{
-        await mongoose.connect(DB_URL);
-        app.listen (PORT, ()=>console.log('My port is working ' + PORT));
+        await mongoose.connect(process.env.DB_URL);
+        app.listen (process.env.PORT, ()=>console.log('My port is working ' + process.env.PORT));
     }
     catch(error)
     {
         console.log(error);
     }
 }
-StartApp();
+startApp();
